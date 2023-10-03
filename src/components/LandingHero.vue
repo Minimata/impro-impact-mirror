@@ -7,9 +7,7 @@ const props = defineProps<{
 <template>
   <div class="hero min-h-screen">
     <div class="hero-overlay bg-opacity-60"></div>
-    <div
-      class="text-center text-neutral-content p-0 pt-20 h-full wide-grid bg-slate-100"
-    >
+    <div class="text-center text-neutral-content p-0 h-full wide-grid bg-white">
       <slot />
     </div>
   </div>

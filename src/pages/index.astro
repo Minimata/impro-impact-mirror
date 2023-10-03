@@ -3,10 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.vue';
 import LandingGrid from '../components/LandingGrid.vue';
 import LandingHero from '../components/LandingHero.vue';
+import NavBar from '../components/NavBar.vue';
 ---
 
 <Layout title="Impro Impact">
   <main>
+    <NavBar></NavBar>
     <LandingHero title={'Impro Impact'}>
       <LandingGrid client:load />
     </LandingHero>

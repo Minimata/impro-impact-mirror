@@ -1,34 +1,52 @@
 <script setup lang="ts">
-import { useMouse } from '@vueuse/core';
+import NextDates from "./NextDates.vue";
+import { useMouse } from "@vueuse/core";
+import { computed } from "vue";
 
 const { x, y } = useMouse();
+const computedY = computed(() => {
+  if (y.value < 250) {
+    return 250;
+  }
+  if (y.value > 1150) {
+    return 1150;
+  }
+  return y.value;
+});
 </script>
 
 <template>
   <div
-    class="w-full h-full grid grid-cols-[1fr_1fr_2fr_2fr_3fr_1fr] grid-rows-[3fr_3fr_3fr_3fr] grid-areas gap-0.5 overflow-hidden"
+    class="w-full h-full grid grid-cols-[1fr_1fr_2fr_2fr_3fr_1fr] grid-rows-[1fr_2fr_2fr_2fr] grid-areas gap-0.5 overflow-hidden"
   >
-    <div class="top-left-corner grid-item">Top left corner</div>
-    <div class="top-fill grid-item">Top fill</div>
-    <div class="top-mid-fill grid-item">Top mid fill</div>
-    <div class="top-right-corner grid-item">Top right corner</div>
-    <div class="left-fill grid-item">Left fill</div>
-    <div class="impro grid-item">IMPRO</div>
-    <div class="mid-fill grid-item">Mid fill</div>
-    <div class="dates-title grid-item">Dates title</div>
-    <div class="right-fill grid-item">Right fill</div>
-    <div class="bot-left-corner grid-item">Bot left corner</div>
-    <div class="impact grid-item">IMPACT</div>
-    <div class="next_dates grid-item">Next Dates</div>
-    <div class="bot-right-corner grid-item">Bot right corner</div>
-    <div class="bot-left-fill grid-item">Bot left fill</div>
-    <div class="bot-right-fill grid-item">Bot right fill</div>
+    <div class="top-left-corner grid-item"></div>
+    <div class="top-fill grid-item"></div>
+    <div class="top-mid-fill grid-item"></div>
+    <div class="top-right-corner grid-item"></div>
+    <div class="left-fill grid-item"></div>
+    <div class="impro grid-item flex items-end">
+      <div class="mx-auto text-6xl font-thin">IMPRO</div>
+    </div>
+    <div class="mid-fill grid-item"></div>
+    <div class="dates-title grid-item flex items-center">
+      <div class="mx-auto">
+        <NextDates></NextDates>
+      </div>
+    </div>
+    <div class="right-fill grid-item"></div>
+    <div class="bot-left-corner grid-item"></div>
+    <div class="impact grid-item flex">
+      <div class="mx-auto text-8xl font-thin">IMPACT</div>
+    </div>
+    <div class="bot-right-corner grid-item"></div>
+    <div class="bot-left-fill grid-item"></div>
+    <div class="bot-right-fill grid-item"></div>
 
     <div
-      class="absolute bg-teal-800 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none blur-xl -z-50 w-48 h-48"
+      class="absolute bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none blur-xl -z-50 w-48 h-48"
       :style="{
         left: `${x}px`,
-        top: `${y}px`,
+        top: `${computedY}px`,
       }"
     />
 
@@ -36,7 +54,7 @@ const { x, y } = useMouse();
       class="absolute bg-slate-900 rounded-full pointer-events-none blur-xl -z-50 w-56 h-56"
     ></div> -->
 
-    <div>
+    <!-- <div>
       <svg
         class="waves"
         xmlns="http://www.w3.org/2000/svg"
@@ -56,24 +74,24 @@ const { x, y } = useMouse();
             xlink:href="#gentle-wave"
             x="48"
             y="0"
-            fill="rgba(17,94,89,0.5"
+            fill="rgba(17,94,89,0.1)"
           />
           <use
             xlink:href="#gentle-wave"
             x="48"
             y="3"
-            fill="rgba(17,94,89,0.3)"
+            fill="rgba(17,94,89,0.05)"
           />
           <use
             xlink:href="#gentle-wave"
             x="48"
             y="5"
-            fill="rgba(17,94,89,0.1)"
+            fill="rgba(17,94,89,0.02)"
           />
-          <!-- <use xlink:href="#gentle-wave" x="48" y="7" fill="#115E59" /> -->
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#115E59" /> 
         </g>
       </svg>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -130,17 +148,17 @@ const { x, y } = useMouse();
 }
 
 .grid-item {
-  background-color: rgb(241, 245, 249);
+  background-color: rgb(255, 255, 255);
   background-size: cover;
-  border-radius: 0.125rem;
+  /* border-radius: 0.125rem; */
 }
 
 .grid-areas {
   grid-template-areas:
-    'top-left-corner    top-fill        top-fill        top-mid-fill    top-right-corner    top-right-corner'
-    'left-fill          impro           impro           mid-fill        dates-title         right-fill'
-    'bot-left-corner    impact          impact          impact          next_dates          bot-right-corner'
-    'bot-left-corner    bot-left-fill   bot-left-fill   bot-left-fill   bot-right-fill      bot-right-corner';
+    "top-left-corner    top-fill        top-fill        top-mid-fill    top-right-corner    top-right-corner"
+    "left-fill          impro           impro           mid-fill        dates-title         right-fill"
+    "bot-left-corner    impact          impact          impact          dates-title          bot-right-corner"
+    "bot-left-corner    bot-left-fill   bot-left-fill   bot-left-fill   bot-right-fill      bot-right-corner";
 }
 
 .top-left-corner {

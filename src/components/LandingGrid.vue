@@ -43,7 +43,7 @@ const computedY = computed(() => {
     <div class="bot-right-fill grid-item"></div>
 
     <div
-      class="absolute bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none blur-xl -z-50 w-48 h-48"
+      class="absolute bg-cyan-200 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none blur-xl -z-50 w-48 h-48"
       :style="{
         left: `${x}px`,
         top: `${computedY}px`,
@@ -148,7 +148,7 @@ const computedY = computed(() => {
 }
 
 .grid-item {
-  background-color: rgb(255, 255, 255);
+  background-color: #0f1729;
   background-size: cover;
   /* border-radius: 0.125rem; */
 }
